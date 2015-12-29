@@ -1,1 +1,2 @@
 # learnpy
+just for myself 
