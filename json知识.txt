@@ -1,2 +1,4 @@
 1. json的数据结构，str类型
 2. json基本上是key/value的，python中就叫字典。既然是字典，那就应该安照读字典的方式去读。将上面的data转为字典类型，这里用json模块的read方法。
+3. 具体详情查看：
+https://docs.python.org/2/library/json.html
