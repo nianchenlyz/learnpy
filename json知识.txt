@@ -5,5 +5,38 @@ https://docs.python.org/2/library/json.html
 4. 编码：把一个Python对象编码转换成Json字符串   json.dumps()
    解码：把Json格式字符串解码转换成Python对象   json.loads()
    separators = (',', ':')为固定吧，多或少或反都不是理想的结果
-   
+encoding：把一个Python对象编码转换成Json字符串
+decoding：把Json格式字符串解码转换成Python对象
+对于简单数据类型（string、unicode、int、float、list、tuple、dict），可以直接处理。 
+
+一、 json.dumps方法对简单数据类型encoding：
+import json
+data = [{'a':"A",'b':(2,4),'c':3.0}]  #list对象
+print "DATA:",repr(data)
+
+data_string = json.dumps(data)
+print "JSON:",data_string
+输出：
+
+DATA: [{'a':'A','c':3.0,'b':(2,4)}] #python的dict类型的数据是没有顺序存储的
+JSON: [{"a":"A","c":3.0,"b":[2,4]}]  
+
+二、 json.loads方法处理简单数据类型的decoding（解码）转换
+import json
+data = [{'a':"A",'b':(2,4),'c':3.0}]  #list对象
+
+data_string = json.dumps(data)
+print "ENCODED:",data_string
+
+decoded = json.loads(data_string)
+print "DECODED:",decoded
+
+print "ORIGINAL:",type(data[0]['b'])
+print "DECODED:",type(decoded[0]['b'])
+输出:
+
+ENCODED: [{"a": "A", "c": 3.0, "b": [2, 4]}]
+DECODED: [{u'a': u'A', u'c': 3.0, u'b': [2, 4]}]
+ORIGINAL: <type 'tuple'>
+DECODED: <type 'list'>
 
