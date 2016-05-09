@@ -1,1 +1,50 @@
+1. Now，如果直接import datetime模块，使用时候需要datetime.datetime(),使用From后，可以直接datetime（）
+>>> from datetime import datetime
+>>> now = datetime.now() # 获取当前datetime
+>>> print(now)
+2015-05-18 16:28:07.198690
+>>> print(type(now))
+如果仅导入import datetime，则必须引用全名datetime.datetime。datetime.now()返回当前日期和时间，其类型是datetime。
+2.datestamp使用
+>>> from datetime import datetime
+>>> dt = datetime(2015, 4, 19, 12, 20) # 用指定日期时间创建datetime
+>>> dt.timestamp() # 把timestamp转换为datetime
+str转换为datetime
+3.格式转换
+很多时候，用户输入的日期和时间是字符串，要处理日期和时间，首先必须把str转换为datetime。转换方法是通过datetime.strptime()实现，需要一个日期和时间的格式化字符串：
+>>> from datetime import datetime
+>>> cday = datetime.strptime('2015-6-1 18:19:59', '%Y-%m-%d %H:%M:%S')
+>>> print(cday)
+2015-06-01 18:19:59
+4.datetime转换为str
+如果已经有了datetime对象，要把它格式化为字符串显示给用户，就需要转换为str，转换方法是通过strftime()实现的，同样需要一个日期和时间的格式化字符串：
+>>> from datetime import datetime
+>>> now = datetime.now()
+>>> print(now.strftime('%a, %b %d %H:%M'))
+Mon, May 05 16:28
+5.datetime加减
+>>> from datetime import datetime, timedelta
+>>> now = datetime.now()
+>>> now
+datetime.datetime(2015, 5, 18, 16, 57, 3, 540997)
+>>> now + timedelta(hours=10)
+datetime.datetime(2015, 5, 19, 2, 57, 3, 540997)
+>>> now - timedelta(days=1)
+datetime.datetime(2015, 5, 17, 16, 57, 3, 540997)
+>>> now + timedelta(days=2, hours=12)
+datetime.datetime(2015, 5, 21, 4, 57, 3, 540997)
 
+Time模块使用简介
+1. Python 提供了一个 time 和 calendar 模块可以用于格式化日期和时间。
+a. 函数time.time()用于获取当前时间戳
+b. localtime = time.localtime(time.time())
+c. localtime = time.asctime( time.localtime(time.time()) )
+d. 格式化日期print time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) 
+# 格式化成Sat Mar 28 22:24:24 2016形式
+print time.strftime("%a %b %d %H:%M:%S %Y", time.localtime()) 
+# 将格式字符串转换为时间戳
+a = "Sat Mar 28 22:24:24 2016"
+print time.mktime(time.strptime(a,"%a %b %d %H:%M:%S %Y"))
+Calendar模块
+1. cal = calendar.month(2016, 1)
+2. 
